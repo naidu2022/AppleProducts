@@ -1,0 +1,2 @@
+# get query
+GET http://localhost:4004/odata/v4/srv-apple-products/appleProducts
