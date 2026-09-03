@@ -9,7 +9,7 @@ entity appleProducts:cuid{
 }
 
 entity order: cuid{
-    cursotmerName:String(50);
+    cursotmerName:String(50) @mandatory;
     cusomerMobile:String(10);
     storeName:String(30);
     netPrice:Decimal(9,2);
