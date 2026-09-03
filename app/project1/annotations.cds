@@ -39,6 +39,8 @@ annotate service.appleProducts with @(
             $Type : 'UI.DataField',
             Value : Status,
             Label : 'Status',
+            Criticality : StatusCriticality,
+            CriticalityRepresentation : #WithIcon,
         },
         {
             $Type : 'UI.DataField',
@@ -46,6 +48,59 @@ annotate service.appleProducts with @(
             Label : 'StatusCriticality',
         },
     ],
+    UI.HeaderInfo : {
+        TypeName : 'Apple Product details',
+        TypeNamePlural : '',
+        Title : {
+            $Type : 'UI.DataField',
+            Value : ID,
+        },
+        Description : {
+            $Type : 'UI.DataField',
+            Value : 'This is the Apple product details',
+        },
+    },
+    UI.Facets : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Product Details',
+            ID : 'ProductDetails',
+            Target : '@UI.FieldGroup#ProductDetails',
+        },
+    ],
+    UI.FieldGroup #ProductDetails : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : ID,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : name,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : price,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : stock,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : discount,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : Status,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : StatusCriticality,
+            },
+        ],
+    },
 );
 
 annotate service.appleProducts with {
