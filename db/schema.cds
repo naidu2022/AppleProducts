@@ -3,7 +3,7 @@ using { managed,cuid } from '@sap/cds/common';
 
 entity appleProducts:cuid{
     name:String @mandatory;
-    price:Integer;
+    price:Integer @mandatory;
     discount:Integer;
     stock:Integer @mandatory;    
 }

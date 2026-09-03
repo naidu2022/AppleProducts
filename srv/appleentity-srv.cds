@@ -18,8 +18,10 @@ service srv_AppleProducts{
         then '2'
         else '3'
         end as StatusCriticality:Integer
-    };
-    entity order as projection on myservice.order;
-    entity OrderItems as projection on myservice.OrderItems;
+    };  
     
+}
+service srv_OrderDetails{
+     entity order as projection on myservice.order;
+    entity OrderItems as projection on myservice.OrderItems;
 }
