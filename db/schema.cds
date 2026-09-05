@@ -3,9 +3,12 @@ using { managed,cuid } from '@sap/cds/common';
 
 entity appleProducts:cuid{
     name:String @mandatory;
-    price:Integer @mandatory;
+    price:Integer ;
     discount:Integer @mandatory;
-    stock:Integer @mandatory;    
+    stock:Integer ;  
+    Price_After_Discount:String;  
+    soldstock:Integer;
+    netstock:Integer;
 }
 
 entity order: cuid{

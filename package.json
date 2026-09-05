@@ -18,6 +18,9 @@
 	"private": true,
 	"cds": {
 		"requires": {
+			"db": {
+			"kind": "hana"
+			},
 			"[production]": {
 				"auth": "xsuaa"
 			}

@@ -13,39 +13,45 @@ annotate service.appleProducts with @(
         {
             $Type : 'UI.DataField',
             Value : ID,
-            Label : 'ID',
         },
         {
             $Type : 'UI.DataField',
             Value : name,
-            Label : 'name',
         },
         {
             $Type : 'UI.DataField',
             Value : price,
-            Label : 'price',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : stock,
-            Label : 'stock',
         },
         {
             $Type : 'UI.DataField',
             Value : discount,
-            Label : 'discount',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : stock,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : Price_After_Discount,
+            Label : 'Price_After_Discount',
         },
         {
             $Type : 'UI.DataField',
             Value : Status,
-            Label : 'Status',
-            Criticality : StatusCriticality,
-            CriticalityRepresentation : #WithIcon,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : netstock,
+            Label : 'netstock',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : soldstock,
+            Label : 'soldstock',
         },
         {
             $Type : 'UI.DataField',
             Value : StatusCriticality,
-            Label : 'StatusCriticality',
         },
     ],
     UI.HeaderInfo : {
@@ -93,11 +99,18 @@ annotate service.appleProducts with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : Status,
+                Value : soldstock,
+                Label : 'soldstock',
             },
             {
                 $Type : 'UI.DataField',
-                Value : StatusCriticality,
+                Value : Price_After_Discount,
+                Label : 'Price_After_Discount',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : netstock,
+                Label : 'netstock',
             },
         ],
     },
