@@ -32,47 +32,47 @@ module.exports = class srv_OrderDetails extends cds.ApplicationService {
         //     req.data.totalPrice =
         //         req.data.quantity * req.data.orderPrice;
         // });
-       this.after('PATCH', OrderItems.drafts, async (data, req) => {
+        this.after('PATCH', OrderItems.drafts, async (data, req) => {
 
-    const orderitemID = data.ID;
+            const orderitemID = data.ID;
 
-    const recOrderItem = await SELECT.one
-        .from(OrderItems.drafts)
-        .where({ ID: orderitemID });
+            const recOrderItem = await SELECT.one
+                .from(OrderItems.drafts)
+                .where({ ID: orderitemID });
 
-    if (!recOrderItem) return;
+            if (!recOrderItem) return;
 
-    const quantity = Number(recOrderItem.quantity || 0);
-    const orderPrice = Number(recOrderItem.orderPrice || 0);
-    const discount = Number(recOrderItem.discount || 0);
+            const quantity = Number(recOrderItem.quantity || 0);
+            const orderPrice = Number(recOrderItem.orderPrice || 0);
+            const discount = Number(recOrderItem.discount || 0);
 
-    const totalPriceValue = quantity * orderPrice;
+            const totalPriceValue = quantity * orderPrice;
 
-    const afterDiscountPrice =
-        orderPrice - ((orderPrice * discount) / 100);
+            const afterDiscountPrice =
+                orderPrice - ((orderPrice * discount) / 100);
 
-    await UPDATE(OrderItems.drafts)
-        .set({
-            totalPrice: totalPriceValue,
-            unitPrice: afterDiscountPrice
-        })
-        .where({ ID: orderitemID });
+            await UPDATE(OrderItems.drafts)
+                .set({
+                    totalPrice: totalPriceValue,
+                    unitPrice: afterDiscountPrice
+                })
+                .where({ ID: orderitemID });
 
-    const allOrderitemsDraftitems = await SELECT
-        .from(OrderItems.drafts)
-        .where({ order_ID: recOrderItem.order_ID });
+            const allOrderitemsDraftitems = await SELECT
+                .from(OrderItems.drafts)
+                .where({ order_ID: recOrderItem.order_ID });
 
-    let totalOrderPrice = 0;
+            let totalOrderPrice = 0;
 
-    for (const item of allOrderitemsDraftitems) {
-        totalOrderPrice += Number(item.totalPrice || 0);
-    }
+            for (const item of allOrderitemsDraftitems) {
+                totalOrderPrice += Number(item.totalPrice || 0);
+            }
 
-    await UPDATE(order.drafts)
-        .set({ netPrice: totalOrderPrice })
-        .where({ ID: recOrderItem.order_ID });
+            await UPDATE(order.drafts)
+                .set({ netPrice: totalOrderPrice })
+                .where({ ID: recOrderItem.order_ID });
 
-});
+        });
 
         return super.init()
     }
