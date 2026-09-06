@@ -16,11 +16,12 @@ entity order: cuid{
     cusomerMobile:String(10);
     storeName:String(30);
     netPrice:Decimal(9,2);
-    itemss:Association to many OrderItems on itemss.order=$self;
+    itemss:Composition of many OrderItems on itemss.order=$self;
 }
 entity OrderItems:cuid{
     order: Association to order;
     product:Association to appleProducts;
+    orderPrice:Integer;
     quantity:Integer;
     unitPrice:Decimal(9,2);
     discount:Integer;

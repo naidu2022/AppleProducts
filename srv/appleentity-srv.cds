@@ -21,7 +21,3 @@ service srv_AppleProducts{
     };  
     
 }
-service srv_OrderDetails{
-    entity order as projection on myservice.order;
-    entity OrderItems as projection on myservice.OrderItems;
-}
