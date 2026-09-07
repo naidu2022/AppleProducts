@@ -2,22 +2,27 @@ using {schema.db as myservice} from '../db/schema';
 
 service srv_OrderDetails {
     @odata.draft.enabled
-    entity order      as projection on myservice.order;
+    @Common.SideEffects:{SourceEntities:['itemss'],TargetProperties:['netPrice']}
+    entity order as projection on myservice.order;
+    action abc();
 
+    
+    @Common.SideEffects:{SourceProperties:['quantity','orderPrice','discount'],TargetProperties:['totalPrice','unitPrice']}
     entity OrderItems as projection on myservice.OrderItems;
+    entity appleProducts as projection on myservice.appleProducts;
 }
 
-annotate srv_OrderDetails.OrderItems with @Common.SideEffects #Pricing: {
-    SourceProperties: [
-        quantity,
-        orderPrice,
-        totalPrice,
-        discount
-    ],
-    TargetProperties: [
-        totalPrice,
-        unitPrice,
-    //order/netPrice
-    ],
-    TargetEntities  : [order]
-};
+// annotate srv_OrderDetails.OrderItems with @Common.SideEffects #Pricing: {
+//     SourceProperties: [
+//         quantity,
+//         orderPrice,
+//         totalPrice,
+//         discount
+//     ],
+//     TargetProperties: [
+//         totalPrice,
+//         unitPrice,
+//     //order/netPrice
+//     ],
+//     TargetEntities  : [order]
+// };

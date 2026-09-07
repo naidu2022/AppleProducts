@@ -173,3 +173,24 @@ annotate service.OrderItems with @(
     ]
 );
 
+annotate service.OrderItems with {
+    product @(
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'appleProducts',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : product_ID,
+                    ValueListProperty : 'ID',
+                },
+                {
+                    $Type : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'name',
+                },
+            ],
+            Label : 'Select Apple Product',
+        },
+        Common.ValueListWithFixedValues : false,
+)};
+

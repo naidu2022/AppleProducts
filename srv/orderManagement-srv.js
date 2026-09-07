@@ -1,6 +1,6 @@
 const cds = require('@sap/cds');
 const { data } = require('@sap/cds/lib/dbs/cds-deploy');
-const { INSERT, SELECT } = require('@sap/cds/lib/ql/cds-ql');
+const { INSERT, SELECT, DELETE, UPDATE } = require('@sap/cds/lib/ql/cds-ql');
 
 module.exports = class srv_OrderDetails extends cds.ApplicationService {
     init() {
@@ -71,6 +71,19 @@ module.exports = class srv_OrderDetails extends cds.ApplicationService {
             await UPDATE(order.drafts)
                 .set({ netPrice: totalOrderPrice })
                 .where({ ID: recOrderItem.order_ID });
+
+        });
+
+        this.after('DELETE',OrderItems.drafts, async (data,req)=>{
+            console.log("I am in after delete records");
+            const orderID=req.data.order_ID;
+            const remainingItems=await SELECT.from(OrderItems.drafts).where({order_ID:orderID});
+            console.log("After getting all orderitems");
+            var netprice=0;
+            for (const item of remainingItems) {
+                netprice += Number(item.totalPrice || 0);
+            }
+            await UPDATE(order.drafts).set({netPrice:netprice}).where({ID:orderID});
 
         });
 
