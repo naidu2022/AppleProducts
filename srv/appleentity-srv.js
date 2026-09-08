@@ -42,20 +42,8 @@ module.exports = class srv_AppleProducts extends cds.ApplicationService {
             var NewStock = req.data.Stock;
 
             try{
-            if (IsActiveEntity) {
-                await UPDATE(appleProducts)
-                    .set({ stock: { '+=': NewStock } })
-                    .where({ ID: record_Product_ID });
-            } else {
-                // Update draft
-                await UPDATE(appleProducts.drafts)
-                    .set({ stock: { '+=': NewStock } })
-                    .where({ ID: record_Product_ID });
-                // Update active record also
-                await UPDATE(appleProducts)
-                    .set({ stock: { '+=': NewStock } })
-                    .where({ ID: record_Product_ID });
-            }
+             await UPDATE(appleProducts).set({ stock: { '+=': NewStock } }).where({ ID: record_Product_ID });
+
             console.log(req.params[0].ID);
             console.log(req.params[0]);
             console.log(req.data.Stock);

@@ -20,7 +20,7 @@ service srv_AppleProducts{
         end as StatusCriticality:Integer
     }
     actions{
-        @Common.SideEffects:{TargetProperties:['stock']}
+        @Common.SideEffects:{TargetProperties:['stock','Status','StatusCriticality']}
         action AddStock(Stock:Integer) returns String;
     }  
  

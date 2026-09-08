@@ -38,6 +38,7 @@ annotate service.appleProducts with @(
         {
             $Type : 'UI.DataField',
             Value : Status,
+            Criticality : StatusCriticality,
         },
         {
             $Type : 'UI.DataField',
@@ -48,10 +49,6 @@ annotate service.appleProducts with @(
             $Type : 'UI.DataField',
             Value : soldstock,
             Label : 'soldstock',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : StatusCriticality,
         },
         {
             $Type : 'UI.DataFieldForAction',
