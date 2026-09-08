@@ -53,6 +53,11 @@ annotate service.appleProducts with @(
             $Type : 'UI.DataField',
             Value : StatusCriticality,
         },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'srv_AppleProducts.AddStock',
+            Label : 'AddStock',
+        },      
     ],
     UI.HeaderInfo : {
         TypeName : 'Apple Product details',

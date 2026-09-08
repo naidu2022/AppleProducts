@@ -18,6 +18,11 @@ service srv_AppleProducts{
         then '2'
         else '3'
         end as StatusCriticality:Integer
-    };  
+    }
+    actions{
+        @Common.SideEffects:{TargetProperties:['stock']}
+        action AddStock(Stock:Integer) returns String;
+    }  
+ 
     
 }
