@@ -14,7 +14,8 @@
   "scripts": {
     "start": "cds-serve",
     "watch-project1": "cds watch --open project1/index.html?sap-ui-xx-viewCache=false --livereload false",
-    "watch-ordermanagement": "cds watch --open ordermanagement/index.html?sap-ui-xx-viewCache=false --livereload false"
+    "watch-ordermanagement": "cds watch --open ordermanagement/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-storedashboard": "cds watch --open com.demo.storedashboard/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {
