@@ -42,14 +42,17 @@
                 "Employee"
               ],
               "attr": {
-                "storeName": ["KOTI","LB Nagar"]
+                "storeName": ["KOTI","LB Nagar","KPHB","Kondapur"]
               }
             },
             "raji": {
               "password": "raji",
               "roles": [
                 "Employee"
-              ]
+              ],
+               "attr": {
+                "storeName": ["KOTI","LB Nagar","KPHB"]
+              }
             }
           }
         }

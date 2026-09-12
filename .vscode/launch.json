@@ -11,7 +11,7 @@
         "--profile",
         "hybrid",
         "--port",
-        "4003"
+        "4007"
       ],
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",

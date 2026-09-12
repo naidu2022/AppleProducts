@@ -1,6 +1,40 @@
 {
-  "scopes": [],
-  "attributes": [],
-  "role-templates": [],
-  "authorities-inheritance": false
+  "xsappname": "AppleProducts",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Owner",
+      "description": "Owner Role"
+    },
+    {
+      "name": "$XSAPPNAME.Employee",
+      "description": "Employee Role"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "storeName",
+      "description": "Store Name",
+      "valueType": "string"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Owner",
+      "description": "Owner Role",
+      "scope-references": [
+        "$XSAPPNAME.Owner"
+      ]
+    },
+    {
+      "name": "Employee",
+      "description": "Employee Role",
+      "scope-references": [
+        "$XSAPPNAME.Employee"
+      ],
+      "attribute-references": [
+        "storeName"
+      ]
+    }
+  ]
 }

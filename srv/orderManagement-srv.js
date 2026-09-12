@@ -7,11 +7,13 @@ module.exports = class srv_OrderDetails extends cds.ApplicationService {
         const { order } = cds.entities(srv_OrderDetails);
         const { OrderItems } = cds.entities(srv_OrderDetails);
 
-        // this.before('*', req => {
-        //     console.log("User ID:", req.user.id);
-        //     //console.log("Roles:", [...req.user.roles]);
-        //     //console.log("Attributes:", req.user.attr);
-        // });
+        this.before('CREATE', req => {
+            console.log("User ID:", req.user.id);
+            //console.log("Roles:", [...req.user.roles]);
+            //console.log("Attributes:", req.user.attr);
+            let aStoreName= Array.isArray(req.user.attr.storeName)?req.user.attr.storeName:[req.user.attr.storeName];
+            req.data.storeName=aStoreName[2];
+        });
         // /// this method is for only show in UI
         // this.after('READ', OrderItems, async (data, req) => {
 
