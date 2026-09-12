@@ -6,6 +6,12 @@ module.exports = class srv_OrderDetails extends cds.ApplicationService {
     init() {
         const { order } = cds.entities(srv_OrderDetails);
         const { OrderItems } = cds.entities(srv_OrderDetails);
+
+        // this.before('*', req => {
+        //     console.log("User ID:", req.user.id);
+        //     //console.log("Roles:", [...req.user.roles]);
+        //     //console.log("Attributes:", req.user.attr);
+        // });
         // /// this method is for only show in UI
         // this.after('READ', OrderItems, async (data, req) => {
 
@@ -74,16 +80,16 @@ module.exports = class srv_OrderDetails extends cds.ApplicationService {
 
         });
 
-        this.after('DELETE',OrderItems.drafts, async (data,req)=>{
+        this.after('DELETE', OrderItems.drafts, async (data, req) => {
             console.log("I am in after delete records");
-            const orderID=req.data.order_ID;
-            const remainingItems=await SELECT.from(OrderItems.drafts).where({order_ID:orderID});
+            const orderID = req.data.order_ID;
+            const remainingItems = await SELECT.from(OrderItems.drafts).where({ order_ID: orderID });
             console.log("After getting all orderitems");
-            var netprice=0;
+            var netprice = 0;
             for (const item of remainingItems) {
                 netprice += Number(item.totalPrice || 0);
             }
-            await UPDATE(order.drafts).set({netPrice:netprice}).where({ID:orderID});
+            await UPDATE(order.drafts).set({ netPrice: netprice }).where({ ID: orderID });
 
         });
 

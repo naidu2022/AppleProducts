@@ -2,6 +2,8 @@ using { schema.db as myservice } from '../db/schema';
 
 service srv_AppleProducts{
     @odata.draft.enabled
+    //@requires:'Employee'
+     
     entity appleProducts as projection on myservice.appleProducts{
        *,
         case

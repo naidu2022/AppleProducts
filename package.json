@@ -25,6 +25,34 @@
       },
       "[production]": {
         "auth": "xsuaa"
+      },
+      "[development]": {
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "naidu": {
+              "password": "naidu",
+              "roles": [
+                "Owner"
+              ]
+            },
+            "amar": {
+              "password": "amar",
+              "roles": [
+                "Employee"
+              ],
+              "attr": {
+                "storeName": ["KOTI","LB Nagar"]
+              }
+            },
+            "raji": {
+              "password": "raji",
+              "roles": [
+                "Employee"
+              ]
+            }
+          }
+        }
       }
     }
   },

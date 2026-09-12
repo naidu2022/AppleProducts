@@ -1,7 +1,7 @@
 using { schema.db as myservice } from '../db/schema';
 
 service StoreAnalyticsS {
-
+    @requires:'Owner'
     entity StoreWiseSales as select from myservice.order {
         key storeName,
        cast( sum(netPrice) as Decimal(9,2)) as totalSales 
